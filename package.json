@@ -1,0 +1,25 @@
+{
+  "name": "mercadona-tickets-analytics",
+  "version": "1.0.0",
+  "description": "Automatización y analítica inteligente de tickets digitales de Mercadona en Google Sheets y Google Drive.",
+  "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "test": "node --test test/*.test.ts",
+    "build": "node scripts/build-gas.mjs"
+  },
+  "keywords": [
+    "mercadona",
+    "tickets",
+    "analytics",
+    "google-apps-script",
+    "google-sheets"
+  ],
+  "author": "Luis",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/google-apps-script": "^1.0.89",
+    "@types/node": "^22.14.0",
+    "typescript": "^5.8.0"
+  }
+}
