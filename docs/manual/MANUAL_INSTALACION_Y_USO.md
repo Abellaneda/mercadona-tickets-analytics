@@ -12,8 +12,8 @@ Este manual explica paso a paso cómo actualizar y manejar la automatización en
    - Comprueba que en **`Servicios (+)`** sigue apareciendo **`Drive`** (ya lo tienes activado; si alguna vez instalas esto en otra hoja nueva, pulsa `+` junto a *Servicios*, elige **Drive API** y pulsa *Añadir*).
 4. Haz clic en el archivo **`Código.gs`**:
    - Selecciona todo el código antiguo (`Ctrl + A`) y bórralo.
-   - Abre en tu ordenador el archivo empaquetado:
-     `C:\Users\Luis\antigravity\Mercadona-Tickets-Analytics\dist\Codigo_AppsScript.gs`
+   - Abre en tu ordenador o en este repositorio el archivo empaquetado:
+     [`dist/Codigo_AppsScript.gs`](../../dist/Codigo_AppsScript.gs)
    - Copia todo su contenido y pégalo en `Código.gs`.
 5. Pulsa **Guardar** (icono de disquete 💾 o `Ctrl + S`).
 6. Cierra la pestaña de Apps Script y **recarga la pestaña de `Listado_tickets` (`F5`)**.
