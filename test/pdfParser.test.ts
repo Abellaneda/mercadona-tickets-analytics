@@ -7,14 +7,14 @@ import {
   validateTicket,
 } from '../src/utils/pdfParser.ts';
 
-// Ticket real 1: Albacete (97,67 € · 40 artículos)
-const TICKET_ALBACETE_97 = `
+// Ticket de prueba 1: Dirección anonimizada (97,67 € · 40 artículos)
+const TICKET_ANONIMO_97 = `
 MERCADONA, S.A. A-46103834
-AVDA. CONSTANTINO ROMERO S/N
-02005 ALBACETE
-TELÉFONO: 967219522
-17/07/2023 19:14 OP: 378512
-FACTURA SIMPLIFICADA: 3826-013-261168
+AVENIDA DEL EJEMPLO S/N
+28001 MADRID
+TELÉFONO: 910000000
+17/07/2023 19:14 OP: 123456
+FACTURA SIMPLIFICADA: 1234-013-000001
 Descripción P. Unit Importe
 1 LECHE SEMI S/LACT 5,88
 1 GEL LIMPIADOR BAÑO 1,50
@@ -64,14 +64,14 @@ TOTAL (€) 97,67
 TARJETA BANCARIA 97,67
 `;
 
-// Ticket real 2: Albacete (184,91 € · 60 artículos en texto continuo de Drive OCR)
-const TICKET_ALBACETE_184 = `
+// Ticket de prueba 2: Dirección anonimizada (184,91 € · 60 artículos en texto continuo de Drive OCR)
+const TICKET_ANONIMO_184 = `
 MERCADONA, S.A. A-46103834 
-AV CONSTANTINO ROMERO 
-02005 ALBACETE 
-TELÉFONO: 967219522 
-03/11/2026 19:19 OP: 976371 
-FACTURA SIMPLIFICADA: 3826-011-665994 
+AVENIDA DEL EJEMPLO 
+28001 MADRID 
+TELÉFONO: 910000000 
+03/11/2026 19:19 OP: 123456 
+FACTURA SIMPLIFICADA: 1234-011-000002 
 Cnt. Descripción P. Unit Importe 1 EMPANADILLAS ATUN 1,90 1 SALTEADO DE VERDURAS 1,55 1 SALTEADO VERD. ASADA 1,80 1 PATATAS GAJO 1,65 1 ALBONDIGAS DE BACALA 2,10 1 PATATA PREFREG. FINA 1,85 1 BOLSA FIGURAS CHOCO 2,80 1 CHICLES MENTA FUERTE 1,00 1 LAGARTO CERDO 4,16 1 PANCETA 3,12 1 HAMB. CERDO IBÉRICO 3,90 1 PORCIÓN SALMÓN 9,54 1 MEDIA CARETA S/OREJA 3,01 1 LECHE ENTERA P6 9,36 1 BURGER M CERDO 500G 2,75 1 BENTO MIX 8,75 1 FILETE EXTRA-TIERNO 4,51 1 PECHUGA FAMILIAR 8,01 1 FILETE PECHUGA 4,87 1 CHOCOBUNS 1,50 1 TIRAS FRITAS 0,80 1 PAN RALLADO CASERO 1,00 1 200 SERVIL. BLANCAS 1,20 2 BARRA CAMPESINA 0,65 1,30 2 ESPONJA INFANTIL 1,90 3,80 1 SAZONADOR PAELLA 1,55 2 STICKS SALAMI 1,10 2,20 1 ROSQUILLA CACAO 1,55 1 CURCUMA 1,30 1 FUET ESPETEC EXTRA 2,50 1 BRAGUITAS T-17-30 KG 10,65 1 MANDARINA 1 KG 2,35 1 PATATAS CAMPESTRES 1,25 1 NACHOS 0,90 1 RESERVA LONCHAS 25,00 5,05 1 MAGDALENA CASERA 2,70 2 GARBANZO PEDROSILLAN 0,90 1,80 1 ACEITUNA ALIÑADA 1,90 1 TOM. RECETA ARTESANA 2,00 1 MERMELADA FRESA 1,45 2 CALDO POLLO 0,75 1,50 1 VINO BLANCO BRICK 0,95 1 HUMMUS CLASICO 1,05 1 PAN SEMILLAS 1,50 4 PIRULETA CHOCOLATE 1,50 6,00 1 Q.IBÉRICO PRECORTADO 4,58 1 T. NEGRO CRUJIENTE 2,20 1 PATATAS SERRANO 1,25 2 BOLSA PLASTICO 0,15 0,30 2 TOALLITA BEBE FRESC 0,75 1,50 1 ATÚN CON TOMATE P3 2,10 1 ATUN CLARO NATURAL 4,20 1 AJO SECO 250 G 1,85 1 TOMATE NATURAL RALLA 1,45 1 GUACAMOLE 500 GR 3,95 1 CHILI CON CARNE 2,80 1 COLA CAO 17,00 1 PATATA 
 1,300 kg 1,90 €/kg 2,47 1 CALABACIN VERDE 
 1,032 kg 1,40 €/kg 1,44 1 BANANA 
@@ -81,26 +81,26 @@ TARJETA BANCARIA 184,91
 `;
 
 test('PDF Parser - Ticket 97,67 € (40 artículos y conciliación exacta OK)', () => {
-  const ticket = parseMercadonaTicketText(TICKET_ALBACETE_97, 'ticket_97.pdf');
+  const ticket = parseMercadonaTicketText(TICKET_ANONIMO_97, 'ticket_97.pdf');
   const val = validateTicket(ticket);
 
-  assert.equal(ticket.invoiceNumber, '3826-013-261168');
+  assert.equal(ticket.invoiceNumber, '1234-013-000001');
   assert.equal(ticket.dateTime, '17/07/2023 19:14');
   assert.equal(ticket.items.length, 40);
   assert.equal(ticket.totalAmount, 97.67);
-  assert.match(ticket.storeName, /ALBACETE/i);
+  assert.match(ticket.storeName, /MADRID/i);
   assert.equal(val.status, 'OK');
   assert.equal(val.itemsSum, 97.67);
   assert.equal(val.difference, 0);
 });
 
 test('PDF Parser - Ticket 184,91 € (60 artículos en stream OCR de Drive y conciliación OK)', () => {
-  const ticket = parseMercadonaTicketText(TICKET_ALBACETE_184, 'ticket_184.pdf');
+  const ticket = parseMercadonaTicketText(TICKET_ANONIMO_184, 'ticket_184.pdf');
   const val = validateTicket(ticket);
 
-  assert.equal(ticket.invoiceNumber, '3826-011-665994');
+  assert.equal(ticket.invoiceNumber, '1234-011-000002');
   assert.equal(ticket.dateTime, '03/11/2026 19:19');
-  assert.equal(ticket.storeName, 'AV CONSTANTINO ROMERO (ALBACETE)');
+  assert.equal(ticket.storeName, 'AVENIDA DEL EJEMPLO (MADRID)');
   assert.equal(ticket.items.length, 60);
   assert.equal(ticket.totalAmount, 184.91);
   assert.equal(val.status, 'OK');
