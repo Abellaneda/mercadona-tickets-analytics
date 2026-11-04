@@ -3,7 +3,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
 [![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-v8-green.svg)](https://developers.google.com/apps-script)
 [![Tests](https://img.shields.io/badge/Tests-12%2F12%20Passing-success.svg)](test/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
 
 > **Language / Idioma:** [🇪🇸 Español](#-versión-en-español) | [🇬🇧 English](#-english-version)
 
@@ -268,7 +268,11 @@ La instalación solo debe realizarse una vez y toma menos de 3 minutos:
 
 ### 📄 Licencia
 
-Este proyecto está bajo la Licencia **MIT**. Consulta el archivo `LICENSE` o el pie de este repositorio para más detalles.
+Este proyecto está bajo la Licencia **Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (`CC BY-NC-SA 4.0`)**.
+- **Permitido:** Uso personal, estudio, aprendizaje y distribución no comercial.
+- **Obligatorio:** Atribución de autoría y compartir cualquier derivado bajo esta misma licencia.
+- **Prohibido:** Cualquier uso, venta o explotación comercial directa o indirecta sin autorización expresa.
+Consulta el archivo [`LICENSE`](LICENSE) para más detalles.
 
 ---
 
@@ -443,4 +447,8 @@ Deployment requires less than 3 minutes:
 
 ### 📄 License
 
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (`CC BY-NC-SA 4.0`)**.
+- **Permitted:** Personal use, educational exploration, and non-commercial sharing.
+- **Required:** Proper attribution to Luis Abellaneda and sharing any derivative works under the identical license.
+- **Restricted:** Any commercial exploitation, redistribution for profit, or commercial SaaS usage is strictly prohibited without explicit written permission.
+See the [`LICENSE`](LICENSE) file for complete legal terms.
